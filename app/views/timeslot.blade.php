@@ -25,10 +25,12 @@
 	
 		<div class="field-row">
 			{{ Form::hidden('timeslotID', $timeslot->id) }}
-			{{ Form::submit('Create Feature') }}
+			{{ Form::submit('Schedule Time') }}
 		</div>
 
 
 	{{ Form::close() }}
+
+	<p><a href="{{ action('AppController@showDay', array('dayID' => $day->id)) }}">&larr; Back to available times</a></p>
 
 @stop

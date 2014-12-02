@@ -88,3 +88,10 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('user-admin', function() {
+	if (!Session::has('user-admin')) {
+		return Redirect::action('AppController@showHome');
+	}
+});

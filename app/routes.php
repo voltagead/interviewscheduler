@@ -22,3 +22,17 @@ Route::post('signup-complete', array(
 	'before' => 'csrf',
 	'uses' => 'AppController@handleSignup',
 ));
+
+
+// Add an admin route
+Route::get('admin/login', 'AdminController@login');
+Route::post('admin/login', array(
+	'before' => 'csrf',
+	'uses' => 'AdminController@handleLogin',
+));
+
+Route::group( array( 'prefix' => 'admin', 'before' => 'user-admin' ), function() {
+	Route::get('/', 'AdminController@adminHome');
+	Route::get('day/{dayID}', 'AdminController@showDay');
+	Route::get('logout', 'AdminController@logout');
+});

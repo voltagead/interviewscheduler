@@ -23,4 +23,6 @@
 		@endif
 	@endforeach
 
+	<p><a href="{{ action('AppController@showHome') }}">&larr; Back to days</a></p>
+
 @stop
