@@ -1,25 +1,23 @@
 @extends('layouts.template')
 
 @section('body')
-	<h1>{{ $day->title }}</h1>
+	<ul>
+		<li class="list-header"><h1>{{ $day->title }}</h1></li>
 
-	@foreach ($timeslots as $timeslot)
+		@foreach ($timeslots as $timeslot)
 
-		@if ($timeslot->available)
-			<div class="timeslot-row">
-		@else
-			<div class="timeslot-row unavailable">
-		@endif
+			<li class="timeslot-row clearfix">
 
-			<div class="timeslot-left">{{ $timeslot->time }}</div>
-			<div class="timeslot-right">
-				@if (!$timeslot->available)
-					{{ $timeslot->name }}, {{ $timeslot->phone }}
-				@endif
-			</div>
-		</div>
+				<div class="timeslot-left">{{ $timeslot->time }}</div>
+				<div class="timeslot-right">
+					@if (!$timeslot->available)
+						{{ $timeslot->name }}, {{ $timeslot->phone }}
+					@endif
+				</div>
+			</li>
 
-	@endforeach
+		@endforeach
+	</ul>
 
 	<p><a href="{{ action('AdminController@adminHome') }}">&larr; Back to days</a></p>
 
