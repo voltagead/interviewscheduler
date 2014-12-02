@@ -14,7 +14,11 @@
 // Show the homepage
 Route::get('/', 'AppController@showHome');
 
-Route::get('/day/{dayID}', 'AppController@showDay');
+Route::get('day/{dayID}', 'AppController@showDay');
 
-Route::get('/timeslot/{timeslotID}', 'AppController@selectTimeslot');
+Route::get('timeslot/{timeslotID}', 'AppController@selectTimeslot');
 
+Route::post('signup-complete', array(
+	'before' => 'csrf',
+	'uses' => 'AppController@handleSignup',
+));
